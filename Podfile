@@ -6,6 +6,7 @@ target 'FoursquareClone' do
   use_frameworks!
 
 pod 'ParseSwift'
+pod 'Parse'
 
   # Pods for FoursquareClone
 
