@@ -15,6 +15,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        
+        
+        // Parse veri tabanı bağlantısını tamamlamak için Back4App isimli cloud database sağlayıcısı üzerinden bağlantı işlemlerini gerçekleştiriyoruz. bunu ise aşağıdaki "ParseClientConfiguration isimli fonksiyonun yardımı ile yapıyoruz. Bizden bir "block" bilgisi istiyor. Bu bilgileri de Back4App üzerinden oluşturduğumuz app bilgigilerindeki "App Settings>Server Settings>Core Settings üzerindeki settings linkinden ulaşıyoruz.
+        // Bağlantıyı kurabilmemiz için gerekli parametreler ise;
+            // ".applicationId"
+            // ".clientKey"
+            // ".server"
+        // Tüm bunlar "String" veri türünde girilmektedir. Örnekleri aşağıdaki gibidir.
         let configuration = ParseClientConfiguration { (ParseMutableClientConfiguration) in
             ParseMutableClientConfiguration.applicationId = "Mko47GwKHjX5H3DidmykNm6P2K7ZCIOcb8nKDP6z"
             ParseMutableClientConfiguration.clientKey = "vB5EgQmSPxSjU8ufthDaLgTUSwwMO0mn3XBcSeis"
