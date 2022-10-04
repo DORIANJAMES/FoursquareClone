@@ -50,6 +50,17 @@ class ViewController: UIViewController {
     }
 
     @IBAction func loginButtonClicked(_ sender: Any) {
+        if usernameTextInput.text == "" && passwordTextInput.text == "" {
+            makeAlert(alertTitle: "Empty Fields", alertMessage: "Login requires boh your 'User Name' and 'Password' been placed in related fields", alertStyle: UIAlertController.Style.alert, buttonTitle: "OK", buttonStyle: UIAlertAction.Style.default, isAnimated: true)
+        }else {
+            PFUser.logInWithUsername(inBackground: usernameTextInput.text!, password: passwordTextInput.text!) { (user, error) in
+                if error != nil {
+                    self.makeAlert(alertTitle: "Login Failed", alertMessage: "\(error?.localizedDescription ?? "Error")", alertStyle: UIAlertController.Style.alert, buttonTitle: "OK", buttonStyle: UIAlertAction.Style.default, isAnimated: true)
+                } else {
+                    self.performSegue(withIdentifier: "logedin", sender: user)
+                }
+            }
+        }
     }
     
     @IBAction func signUpButtonClicked(_ sender: Any) {
