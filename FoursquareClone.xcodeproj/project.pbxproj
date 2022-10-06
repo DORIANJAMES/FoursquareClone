@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0F4DF34E28EF115A000322BC /* AddNewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F4DF34D28EF115A000322BC /* AddNewVC.swift */; };
 		0F4FF6F028EC61DF000B252B /* SettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F4FF6EF28EC61DF000B252B /* SettingsVC.swift */; };
 		0F4FF6F228EC61F4000B252B /* ListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F4FF6F128EC61F4000B252B /* ListVC.swift */; };
 		0F4FF6F428EC621F000B252B /* MapVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F4FF6F328EC621F000B252B /* MapVC.swift */; };
@@ -20,6 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0F4DF34D28EF115A000322BC /* AddNewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewVC.swift; sourceTree = "<group>"; };
 		0F4FF6EF28EC61DF000B252B /* SettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsVC.swift; sourceTree = "<group>"; };
 		0F4FF6F128EC61F4000B252B /* ListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListVC.swift; sourceTree = "<group>"; };
 		0F4FF6F328EC621F000B252B /* MapVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapVC.swift; sourceTree = "<group>"; };
@@ -79,6 +81,7 @@
 				0F4FF6EF28EC61DF000B252B /* SettingsVC.swift */,
 				0F4FF6F128EC61F4000B252B /* ListVC.swift */,
 				0F4FF6F328EC621F000B252B /* MapVC.swift */,
+				0F4DF34D28EF115A000322BC /* AddNewVC.swift */,
 			);
 			path = FoursquareClone;
 			sourceTree = "<group>";
@@ -216,6 +219,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0F501DDB28EC04D9001C923B /* SignUpVC.swift in Sources */,
+				0F4DF34E28EF115A000322BC /* AddNewVC.swift in Sources */,
 				0F4FF6F428EC621F000B252B /* MapVC.swift in Sources */,
 				0F4FF6F228EC61F4000B252B /* ListVC.swift in Sources */,
 				0F4FF6F028EC61DF000B252B /* SettingsVC.swift in Sources */,
