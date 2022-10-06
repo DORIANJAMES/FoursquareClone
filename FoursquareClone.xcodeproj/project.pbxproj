@@ -7,9 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0F4FF6F028EC61DF000B252B /* SettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F4FF6EF28EC61DF000B252B /* SettingsVC.swift */; };
+		0F4FF6F228EC61F4000B252B /* ListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F4FF6F128EC61F4000B252B /* ListVC.swift */; };
+		0F4FF6F428EC621F000B252B /* MapVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F4FF6F328EC621F000B252B /* MapVC.swift */; };
 		0F501DD728EC04D9001C923B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F501DD628EC04D9001C923B /* AppDelegate.swift */; };
 		0F501DD928EC04D9001C923B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F501DD828EC04D9001C923B /* SceneDelegate.swift */; };
-		0F501DDB28EC04D9001C923B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F501DDA28EC04D9001C923B /* ViewController.swift */; };
+		0F501DDB28EC04D9001C923B /* SignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F501DDA28EC04D9001C923B /* SignUpVC.swift */; };
 		0F501DDE28EC04D9001C923B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0F501DDC28EC04D9001C923B /* Main.storyboard */; };
 		0F501DE028EC04D9001C923B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0F501DDF28EC04D9001C923B /* Assets.xcassets */; };
 		0F501DE328EC04D9001C923B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0F501DE128EC04D9001C923B /* LaunchScreen.storyboard */; };
@@ -17,10 +20,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0F4FF6EF28EC61DF000B252B /* SettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsVC.swift; sourceTree = "<group>"; };
+		0F4FF6F128EC61F4000B252B /* ListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListVC.swift; sourceTree = "<group>"; };
+		0F4FF6F328EC621F000B252B /* MapVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapVC.swift; sourceTree = "<group>"; };
 		0F501DD328EC04D9001C923B /* FoursquareClone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FoursquareClone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0F501DD628EC04D9001C923B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0F501DD828EC04D9001C923B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		0F501DDA28EC04D9001C923B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		0F501DDA28EC04D9001C923B /* SignUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpVC.swift; sourceTree = "<group>"; };
 		0F501DDD28EC04D9001C923B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		0F501DDF28EC04D9001C923B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0F501DE228EC04D9001C923B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -65,11 +71,14 @@
 			children = (
 				0F501DD628EC04D9001C923B /* AppDelegate.swift */,
 				0F501DD828EC04D9001C923B /* SceneDelegate.swift */,
-				0F501DDA28EC04D9001C923B /* ViewController.swift */,
+				0F501DDA28EC04D9001C923B /* SignUpVC.swift */,
 				0F501DDC28EC04D9001C923B /* Main.storyboard */,
 				0F501DDF28EC04D9001C923B /* Assets.xcassets */,
 				0F501DE128EC04D9001C923B /* LaunchScreen.storyboard */,
 				0F501DE428EC04D9001C923B /* Info.plist */,
+				0F4FF6EF28EC61DF000B252B /* SettingsVC.swift */,
+				0F4FF6F128EC61F4000B252B /* ListVC.swift */,
+				0F4FF6F328EC621F000B252B /* MapVC.swift */,
 			);
 			path = FoursquareClone;
 			sourceTree = "<group>";
@@ -88,7 +97,6 @@
 				633E9A672872485A17B30ECA /* Pods-FoursquareClone.debug.xcconfig */,
 				A023BBAEEC8264F982F0BB79 /* Pods-FoursquareClone.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -207,7 +215,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0F501DDB28EC04D9001C923B /* ViewController.swift in Sources */,
+				0F501DDB28EC04D9001C923B /* SignUpVC.swift in Sources */,
+				0F4FF6F428EC621F000B252B /* MapVC.swift in Sources */,
+				0F4FF6F228EC61F4000B252B /* ListVC.swift in Sources */,
+				0F4FF6F028EC61DF000B252B /* SettingsVC.swift in Sources */,
 				0F501DD728EC04D9001C923B /* AppDelegate.swift in Sources */,
 				0F501DD928EC04D9001C923B /* SceneDelegate.swift in Sources */,
 			);

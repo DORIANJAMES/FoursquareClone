@@ -9,7 +9,7 @@ import UIKit
 import ParseSwift
 import Parse
 
-class ViewController: UIViewController {
+class SignUpVC: UIViewController {
 
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var usernameTextInput: UITextField!
@@ -58,6 +58,7 @@ class ViewController: UIViewController {
                     self.makeAlert(alertTitle: "Login Failed", alertMessage: "\(error?.localizedDescription ?? "Error")", alertStyle: UIAlertController.Style.alert, buttonTitle: "OK", buttonStyle: UIAlertAction.Style.default, isAnimated: true)
                 } else {
                     self.performSegue(withIdentifier: "logedin", sender: user)
+                    
                 }
             }
         }

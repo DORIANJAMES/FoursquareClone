@@ -17,7 +17,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
         
-        
         // Parse veri tabanı bağlantısını tamamlamak için Back4App isimli cloud database sağlayıcısı üzerinden bağlantı işlemlerini gerçekleştiriyoruz. bunu ise aşağıdaki "ParseClientConfiguration isimli fonksiyonun yardımı ile yapıyoruz. Bizden bir "block" bilgisi istiyor. Bu bilgileri de Back4App üzerinden oluşturduğumuz app bilgigilerindeki "App Settings>Server Settings>Core Settings üzerindeki settings linkinden ulaşıyoruz.
         // Bağlantıyı kurabilmemiz için gerekli parametreler ise;
             // ".applicationId"
@@ -30,6 +29,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             ParseMutableClientConfiguration.server = "https://parseapi.back4app.com/"
         }
         Parse.initialize(with: configuration)
+        
+        
         return true
     }
 
