@@ -15,6 +15,11 @@ class AddNewVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var goToMapButton: UIButton!
     
+    
+    
+    @IBAction func placeNameEditingChange(_ sender: Any) {
+        goToMapButton.isEnabled = true
+    }
     var picking:Bool?
     
     override func viewDidLoad() {
@@ -23,6 +28,12 @@ class AddNewVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
         let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(selectImage))
         imageView.addGestureRecognizer(gestureRecognizer)
         goToMapButton.isEnabled = false
+        
+        placeTypeTF.addTarget(self, action: #selector(editChanged), for: UIControl.Event.editingChanged)
+    }
+    
+    @objc func editChanged () {
+        
     }
     
     @objc func selectImage() {
@@ -32,13 +43,12 @@ class AddNewVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
         self.present(pickerController, animated: true)
     }
     
+    
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         imageView.image = info[.originalImage] as? UIImage
         self.dismiss(animated: true)
         if placeNameTF.text != "" && placeTypeTF.text != "" && placeAtmosphereTF.text != "" {
-            if info[.originalImage] != nil {
-                goToMapButton.isEnabled = true
-            }
+            goToMapButton.isEnabled = true
         }
     }
     
@@ -47,23 +57,15 @@ class AddNewVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
         performSegue(withIdentifier: "toMapVC", sender: nil)
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        
-    }
-    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let destinationVC = segue.destination as! MapVC
         if placeNameTF.text != nil && placeTypeTF.text != nil && placeAtmosphereTF.text != nil {
-            if picking == true {
-                
-                
-    
                 destinationVC.placeName = placeNameTF.text!
                 destinationVC.placeType = placeTypeTF.text!
                 destinationVC.placeAtmosphere = placeAtmosphereTF.text!
-                destinationVC.imageViewImage = imageView.image!
-            }
+                destinationVC.imageViewImage = imageView.image?.jpegData(compressionQuality: 0.5)!
+        
         }
     }
     

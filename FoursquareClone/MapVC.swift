@@ -6,21 +6,31 @@
 //
 
 import UIKit
+import MapKit
+import CoreLocation
+import Parse
 
-class MapVC: UIViewController {
+class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
+    
+    @IBOutlet weak var mapView: MKMapView!
+    
     
     var placeName = ""
     var placeType = ""
     var placeAtmosphere = ""
-    var imageViewImage:UIImage?
+    var imageViewImage : Data?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
        
     }
     
-
+    @IBAction func saveButtonClicked(_ sender: Any) {
+        print(placeName)
+        print(placeType)
+        print(placeAtmosphere)
+    }
+    
    
 
 }

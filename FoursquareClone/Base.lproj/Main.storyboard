@@ -4,6 +4,7 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
         <capability name="Image references" minToolsVersion="12.0"/>
+        <capability name="Map view configurations" minToolsVersion="14.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -142,6 +143,9 @@
                                 <rect key="frame" x="16" y="64" width="358" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="placeNameEditingChange:" destination="Gtf-hl-Yj3" eventType="editingChanged" id="3vg-J2-P5o"/>
+                                </connections>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Place Type" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dnR-lR-asP">
                                 <rect key="frame" x="16" y="106" width="358" height="34"/>
@@ -267,13 +271,37 @@
                     <view key="view" contentMode="scaleToFill" id="bSN-aZ-cqT">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CAD-nL-Uls">
+                                <rect key="frame" x="0.0" y="47" width="390" height="696"/>
+                                <standardMapConfiguration key="preferredConfiguration"/>
+                            </mapView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wjx-Xb-5pu">
+                                <rect key="frame" x="94" y="775" width="203" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="gray" title="Save"/>
+                                <connections>
+                                    <action selector="saveButtonClicked:" destination="YIY-mQ-eog" eventType="touchUpInside" id="g3q-OZ-omN"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="sGP-Be-tdf"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="sGP-Be-tdf" firstAttribute="bottom" secondItem="CAD-nL-Uls" secondAttribute="bottom" constant="67" id="1BZ-Ex-dbl"/>
+                            <constraint firstItem="CAD-nL-Uls" firstAttribute="leading" secondItem="sGP-Be-tdf" secondAttribute="leading" id="DxB-9L-VNJ"/>
+                            <constraint firstItem="CAD-nL-Uls" firstAttribute="top" secondItem="sGP-Be-tdf" secondAttribute="top" id="VXi-vQ-aTs"/>
+                            <constraint firstItem="sGP-Be-tdf" firstAttribute="trailing" secondItem="CAD-nL-Uls" secondAttribute="trailing" id="x0z-Cn-0XI"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="mapView" destination="CAD-nL-Uls" id="pJg-SG-Ihv"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="p5g-Oa-hVE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4718" y="299"/>
+            <point key="canvasLocation" x="4716.9230769230771" y="298.57819905213267"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
