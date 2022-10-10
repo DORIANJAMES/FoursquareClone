@@ -16,11 +16,42 @@ class AddNewVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
     @IBOutlet weak var goToMapButton: UIButton!
     
     
-    
-    @IBAction func placeNameEditingChange(_ sender: Any) {
-        goToMapButton.isEnabled = true
-    }
+    var placeTypeEditingChanged : Bool?
+    var placeNameEditingChanged : Bool?
     var picking:Bool?
+    
+    @IBAction func placeAtmosphereEditingChanged(_ sender: Any) {
+        if placeAtmosphereTF.text == "" {
+            goToMapButton.isEnabled = false
+        } else {
+            if placeTypeEditingChanged == true {
+                if placeNameEditingChanged == true {
+                    goToMapButton.isEnabled = true
+                }
+            }
+        }
+    }
+    
+    
+    @IBAction func placeTypeEditingChanged(_ sender: Any) {
+        if placeTypeTF.text == "" {
+            placeTypeEditingChanged = false
+            goToMapButton.isEnabled = false
+        } else {
+            placeNameEditingChanged = true
+        }
+    }
+    
+    
+    @IBAction func placeNameEditingChanged(_ sender: Any) {
+        if placeNameTF.text == "" {
+            placeNameEditingChanged = false
+            goToMapButton.isEnabled = false
+        } else {
+            placeNameEditingChanged = true
+        }
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,12 +60,9 @@ class AddNewVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
         imageView.addGestureRecognizer(gestureRecognizer)
         goToMapButton.isEnabled = false
         
-        placeTypeTF.addTarget(self, action: #selector(editChanged), for: UIControl.Event.editingChanged)
     }
+       
     
-    @objc func editChanged () {
-        
-    }
     
     @objc func selectImage() {
         let pickerController = UIImagePickerController()
@@ -42,6 +70,7 @@ class AddNewVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
         pickerController.sourceType = .photoLibrary
         self.present(pickerController, animated: true)
     }
+        
     
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
@@ -49,13 +78,17 @@ class AddNewVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
         self.dismiss(animated: true)
         if placeNameTF.text != "" && placeTypeTF.text != "" && placeAtmosphereTF.text != "" {
             goToMapButton.isEnabled = true
+        } else {
+            goToMapButton.isEnabled = false
         }
     }
     
-
+    
+    
     @IBAction func goToMapButtonClicked(_ sender: Any) {
         performSegue(withIdentifier: "toMapVC", sender: nil)
     }
+        
     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
