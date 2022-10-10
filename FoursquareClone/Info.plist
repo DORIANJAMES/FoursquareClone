@@ -21,5 +21,11 @@
 			</array>
 		</dict>
 	</dict>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>App would like to get your location </string>
+	<key>NSLocationUsageDescription</key>
+	<string>While using this app we need your location</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Please give us the permision to reach your photo library up</string>
 </dict>
 </plist>

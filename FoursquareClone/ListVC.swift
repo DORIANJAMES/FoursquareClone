@@ -6,11 +6,14 @@
 //
 
 import UIKit
+import Parse
 
 class ListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
+    let queryFromServer = PFQuery(className: "Places")
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
         return 10
     }
     
@@ -27,6 +30,7 @@ class ListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
         tableView.delegate = self
         tableView.dataSource = self
+        
         
        
     }

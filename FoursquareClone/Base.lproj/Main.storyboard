@@ -19,23 +19,23 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Foursquare Clone" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vno-XH-6W5">
-                                <rect key="frame" x="16" y="295" width="358" height="48"/>
+                                <rect key="frame" x="16" y="251" width="358" height="48"/>
                                 <fontDescription key="fontDescription" name="Papyrus" family="Papyrus" pointSize="31"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="User Name" textAlignment="natural" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="69f-aa-E4H">
-                                <rect key="frame" x="16" y="386" width="358" height="34"/>
+                                <rect key="frame" x="16" y="342" width="358" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="47C-E5-raB">
-                                <rect key="frame" x="16" y="428" width="358" height="34"/>
+                                <rect key="frame" x="16" y="384" width="358" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GjY-eW-Ocj">
-                                <rect key="frame" x="16" y="470" width="358" height="35"/>
+                                <rect key="frame" x="16" y="426" width="358" height="35"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="gray" title="Login"/>
                                 <connections>
@@ -43,7 +43,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gev-Gq-3cR">
-                                <rect key="frame" x="16" y="513" width="358" height="35"/>
+                                <rect key="frame" x="16" y="469" width="358" height="35"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="gray" title="Sign Up"/>
                                 <connections>
@@ -192,7 +192,7 @@
                         <outlet property="placeAtmosphereTF" destination="23A-Zf-kvM" id="eJa-F0-05P"/>
                         <outlet property="placeNameTF" destination="Wrx-DK-62p" id="T8o-Rh-Kfa"/>
                         <outlet property="placeTypeTF" destination="dnR-lR-asP" id="XgB-Ir-Oer"/>
-                        <segue destination="YIY-mQ-eog" kind="presentation" identifier="toMapVC" modalPresentationStyle="fullScreen" id="LNk-LZ-Bnb"/>
+                        <segue destination="YIY-mQ-eog" kind="show" identifier="toMapVC" id="LNk-LZ-Bnb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DII-XB-lve" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -226,7 +226,7 @@
                     </tabBarItem>
                     <connections>
                         <outlet property="tableView" destination="Q1A-eF-4BA" id="9wL-MF-Uay"/>
-                        <segue destination="OLj-mq-zOz" kind="presentation" identifier="toDetailsVC" modalPresentationStyle="fullScreen" id="UZx-im-iOG"/>
+                        <segue destination="OLj-mq-zOz" kind="show" identifier="toDetailsVC" id="UZx-im-iOG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Dgk-AZ-RtP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -276,16 +276,15 @@
             <objects>
                 <viewController id="YIY-mQ-eog" customClass="MapVC" customModule="FoursquareClone" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="bSN-aZ-cqT">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="787"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CAD-nL-Uls">
-                                <rect key="frame" x="0.0" y="47" width="390" height="696"/>
+                                <rect key="frame" x="0.0" y="0.0" width="390" height="710"/>
                                 <standardMapConfiguration key="preferredConfiguration"/>
                             </mapView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wjx-Xb-5pu">
-                                <rect key="frame" x="94" y="775" width="203" height="35"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wjx-Xb-5pu">
+                                <rect key="frame" x="94" y="718" width="203" height="35"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="gray" title="Save"/>
                                 <connections>
@@ -296,12 +295,16 @@
                         <viewLayoutGuide key="safeArea" id="sGP-Be-tdf"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="sGP-Be-tdf" firstAttribute="bottom" secondItem="CAD-nL-Uls" secondAttribute="bottom" constant="67" id="1BZ-Ex-dbl"/>
-                            <constraint firstItem="CAD-nL-Uls" firstAttribute="leading" secondItem="sGP-Be-tdf" secondAttribute="leading" id="DxB-9L-VNJ"/>
-                            <constraint firstItem="CAD-nL-Uls" firstAttribute="top" secondItem="sGP-Be-tdf" secondAttribute="top" id="VXi-vQ-aTs"/>
-                            <constraint firstItem="sGP-Be-tdf" firstAttribute="trailing" secondItem="CAD-nL-Uls" secondAttribute="trailing" id="x0z-Cn-0XI"/>
+                            <constraint firstItem="wjx-Xb-5pu" firstAttribute="leading" secondItem="sGP-Be-tdf" secondAttribute="leading" constant="94" id="0ec-y7-5NW"/>
+                            <constraint firstItem="CAD-nL-Uls" firstAttribute="trailing" secondItem="bSN-aZ-cqT" secondAttribute="trailingMargin" constant="16" id="9Qi-th-998"/>
+                            <constraint firstItem="CAD-nL-Uls" firstAttribute="leading" secondItem="bSN-aZ-cqT" secondAttribute="leadingMargin" constant="-16" id="HoT-XW-1gX"/>
+                            <constraint firstItem="sGP-Be-tdf" firstAttribute="bottom" secondItem="wjx-Xb-5pu" secondAttribute="bottom" constant="34" id="O4l-HW-ggK"/>
+                            <constraint firstItem="wjx-Xb-5pu" firstAttribute="top" secondItem="CAD-nL-Uls" secondAttribute="bottom" constant="8" id="Pxb-8f-fli"/>
+                            <constraint firstItem="CAD-nL-Uls" firstAttribute="top" secondItem="sGP-Be-tdf" secondAttribute="top" constant="-47" id="QeZ-Bq-gdy"/>
+                            <constraint firstItem="CAD-nL-Uls" firstAttribute="centerX" secondItem="wjx-Xb-5pu" secondAttribute="centerX" id="RoY-Wk-yBZ"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="pzX-hM-CWR"/>
                     <connections>
                         <outlet property="mapView" destination="CAD-nL-Uls" id="pJg-SG-Ihv"/>
                         <segue destination="wct-bq-hTd" kind="presentation" identifier="toMapVC" modalPresentationStyle="fullScreen" id="cn1-bp-Zjp"/>
@@ -316,7 +319,7 @@
             <objects>
                 <viewController id="OLj-mq-zOz" customClass="DetailsVC" customModule="FoursquareClone" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Hjy-gZ-Y12">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="787"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="G6e-sw-OJd">
@@ -346,7 +349,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q8M-MP-FZy">
-                                <rect key="frame" x="0.0" y="483" width="390" height="361"/>
+                                <rect key="frame" x="0.0" y="483" width="390" height="338"/>
                                 <standardMapConfiguration key="preferredConfiguration"/>
                             </mapView>
                         </subviews>
@@ -387,7 +390,7 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="cn1-bp-Zjp"/>
-        <segue reference="SCG-sf-kai"/>
+        <segue reference="0xb-p5-9Rg"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="list.clipboard" catalog="system" width="103" height="128"/>
