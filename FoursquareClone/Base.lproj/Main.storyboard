@@ -307,7 +307,7 @@
                     <navigationItem key="navigationItem" id="pzX-hM-CWR"/>
                     <connections>
                         <outlet property="mapView" destination="CAD-nL-Uls" id="pJg-SG-Ihv"/>
-                        <segue destination="wct-bq-hTd" kind="presentation" identifier="toMapVC" modalPresentationStyle="fullScreen" id="cn1-bp-Zjp"/>
+                        <segue destination="wct-bq-hTd" kind="presentation" identifier="fromMapVCtoListVC" modalPresentationStyle="fullScreen" id="cn1-bp-Zjp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="p5g-Oa-hVE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

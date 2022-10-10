@@ -18,10 +18,9 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
     var placeName = ""
     var placeType = ""
     var placeAtmosphere = ""
-    var imageViewImage : Data?
+    var imageViewImage = ""
     var locationManager = CLLocationManager()
-    var choosenLatitude = ""
-    var choosenLongitude = ""
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,8 +55,8 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
             
             self.mapView.addAnnotation(annotation)
             
-            self.choosenLatitude = String(coordinates.latitude)
-            self.choosenLongitude = String(coordinates.longitude)
+            PlaceInfo.sharedInstance.placeLatitude = String(coordinates.latitude)
+            PlaceInfo.sharedInstance.placeLongitude = String(coordinates.longitude)
         }
     }
     
@@ -67,25 +66,28 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
         let parseObject = PFObject(className: "Places", dictionary: nil)
         parseObject["name"] = placeInfo.placeName
         parseObject["type"] = placeInfo.placeType
-        parseObject["Atmosphere"] = placeInfo.placeAtmosphere
-        parseObject["image"] = placeInfo.placeImage?.jpegData(compressionQuality: 0.5)
+        parseObject["atmosphere"] = placeInfo.placeAtmosphere
+        parseObject["latidude"] = placeInfo.placeLatitude
+        parseObject["longitude"] = placeInfo.placeLongitude
+        
+        if let placeimage = placeInfo.placeImage?.jpegData(compressionQuality: 0.5) {
+            parseObject["image"] = PFFileObject(name: "image\(placeInfo.placeName).jpeg", data: placeimage)
+        }
         
         parseObject.saveInBackground { (saveInfo, error) in
             if error != nil {
-                self.makeAlert(alertTitle: "Error!", alertMessage: "\(error?.localizedDescription ?? "ERROR=?")", alertStyle: UIAlertController.Style.alert, buttonTitle: "OK", buttonStyle: UIAlertAction.Style.default, handler: false)
+                self.makeAlert(alertTitle: "Error!", alertMessage: "\(error?.localizedDescription ?? "ERROR=?")", alertStyle: UIAlertController.Style.alert, buttonTitle: "OK", buttonStyle: UIAlertAction.Style.default, handler: "")
             } else {
-                self.makeAlert(alertTitle: "Success", alertMessage: "Your data has uploaded to our servers.", alertStyle: UIAlertController.Style.alert, buttonTitle: "OK", buttonStyle: UIAlertAction.Style.default, handler: true)
+                self.makeAlert(alertTitle: "Success", alertMessage: "Your data has uploaded to our servers.", alertStyle: UIAlertController.Style.alert, buttonTitle: "OK", buttonStyle: UIAlertAction.Style.default, handler: "segue")
             }
         }
     }
     
-    func makeAlert (alertTitle:String, alertMessage:String, alertStyle:UIAlertController.Style, buttonTitle:String, buttonStyle:UIAlertAction.Style, handler:Bool) {
+    func makeAlert (alertTitle:String, alertMessage:String, alertStyle:UIAlertController.Style, buttonTitle:String, buttonStyle:UIAlertAction.Style, handler:String) {
         let alert = UIAlertController(title: alertTitle, message: alertMessage, preferredStyle: alertStyle)
         let okButton = UIAlertAction(title: buttonTitle, style: buttonStyle) { UIAlertAction in
-            if handler == true {
-                self.dismiss(animated: true)
-            } else {
-                
+            if handler == "segue" {
+                self.performSegue(withIdentifier: "fromMapVCtoListVC", sender: nil)
             }
         }
         alert.addAction(okButton)
