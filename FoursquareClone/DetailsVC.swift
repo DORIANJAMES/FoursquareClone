@@ -13,6 +13,8 @@ class DetailsVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate 
     
     var selectedPlaceName = ""
     var selectedPlaceId = ""
+    var selectedLatitudeDouble = Double()
+    var selectedLongitude = Double()
 
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var placeNameLabel: UILabel!
@@ -46,26 +48,39 @@ class DetailsVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate 
             if error != nil {
                 self.makeAlert(alertTitle: "Fetching Failed", alertMessage: "\(error?.localizedDescription ?? "Error")", alertStyle: UIAlertController.Style.alert, buttonTitle: "OK", buttonStyle: UIAlertAction.Style.default, handler: "failed")
             } else {
-                for object in parseObjects! {
-                    if let name = object.object(forKey: "name") as? String {
-                        self.placeNameLabel.text = name
-                    }
-                    if let type = object.object(forKey: "type") as? String {
-                        self.placeTypeLabel.text = type
-                    }
-                    if let atmosphere = object.object(forKey: "atmosphere") as? String {
-                        self.placeAtmosphereLabel.text = atmosphere
-                    }
-                    if let image = object.object(forKey: "image") as? PFFileObject {
-                        image.getDataInBackground { fetchedImage, error in
-                            if error == nil {
-                                if fetchedImage != nil {
-                                    self.imageView.image = UIImage(data: fetchedImage!)
+                if parseObjects != nil {
+                    if parseObjects!.count > 0 {
+                        let chosenPlaceObject = parseObjects![0]
+                    
+                        if let name = chosenPlaceObject.object(forKey: "name") as? String {
+                            self.placeNameLabel.text = name
+                        }
+                        if let type = chosenPlaceObject.object(forKey: "type") as? String {
+                            self.placeTypeLabel.text = type
+                        }
+                        if let atmosphere = chosenPlaceObject.object(forKey: "atmosphere") as? String {
+                            self.placeAtmosphereLabel.text = atmosphere
+                        }
+                        if let image = chosenPlaceObject.object(forKey: "image") as? PFFileObject {
+                            image.getDataInBackground { fetchedImage, error in
+                                if error == nil {
+                                    if fetchedImage != nil {
+                                        self.imageView.image = UIImage(data: fetchedImage!)
+                                    }
                                 }
                             }
                         }
+                        if let latitude = chosenPlaceObject.object(forKey: "latitude") as? String {
+                            if let doubleLatitude = Double(latitude) {
+                                self.selectedLatitudeDouble = doubleLatitude
+                            }
+                        }
+                        if let longitude = chosenPlaceObject.object(forKey: "longitude") as? String {
+                            if let doubleLongitude = Double(longitude) {
+                                self.selectedLongitude = doubleLongitude
+                            }
+                        }
                     }
-                    
                 }
             }
         }
