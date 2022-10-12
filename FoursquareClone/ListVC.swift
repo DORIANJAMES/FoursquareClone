@@ -19,8 +19,7 @@ class ListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     var placeAtmosphereArray = [String]()
     var placeImageArray = [Data]()
     var placeObjectId = [String]()
-    var selectedPlaceName = ""
-    var selectedPlaceId = ""
+    var chosenPlaceId = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,17 +44,17 @@ class ListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "toDetailsVC", sender: nil)
-        selectedPlaceId = placeObjectId[indexPath.row]
-        selectedPlaceName = placeNameArray[indexPath.row]
+        
+        chosenPlaceId = placeObjectId[indexPath.row]
+        self.performSegue(withIdentifier: "toDetailsVC", sender: nil)
     }
     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let destinationVC = segue.destination as! DetailsVC
-        
-        destinationVC.selectedPlaceName = selectedPlaceName
-        destinationVC.selectedPlaceId = selectedPlaceId
+        if segue.identifier == "toDetailsVC" {
+            let destinationVC = segue.destination as! DetailsVC
+            destinationVC.selectedPlaceId = chosenPlaceId
+        }
     }
     
     
@@ -67,6 +66,7 @@ class ListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         placeAtmosphereArray.removeAll()
         placeImageArray.removeAll()
         placeObjectId.removeAll()
+        chosenPlaceId.removeAll()
         
         queryFromServer.findObjectsInBackground { parseObjecs, error in
             if error != nil {

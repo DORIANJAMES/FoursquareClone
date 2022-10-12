@@ -11,10 +11,10 @@ import Parse
 
 class DetailsVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
     
-    var selectedPlaceName = ""
+    
     var selectedPlaceId = ""
     var selectedLatitudeDouble = Double()
-    var selectedLongitude = Double()
+    var selectedLongitudeDouble = Double()
 
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var placeNameLabel: UILabel!
@@ -28,17 +28,6 @@ class DetailsVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate 
         mapView.delegate = self
         fetchDataFromParse()
     }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        selectedPlaceId.removeAll()
-        selectedPlaceName.removeAll()
-    }
-    override func viewWillAppear(_ animated: Bool) {
-        fetchDataFromParse()
-    }
-   
-    
-    
     
     func fetchDataFromParse () {
         
@@ -73,13 +62,24 @@ class DetailsVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate 
                         if let latitude = chosenPlaceObject.object(forKey: "latitude") as? String {
                             if let doubleLatitude = Double(latitude) {
                                 self.selectedLatitudeDouble = doubleLatitude
+                                
                             }
                         }
                         if let longitude = chosenPlaceObject.object(forKey: "longitude") as? String {
                             if let doubleLongitude = Double(longitude) {
-                                self.selectedLongitude = doubleLongitude
+                                self.selectedLongitudeDouble = doubleLongitude
+                                print("Longitude = \(self.selectedLongitudeDouble)")
                             }
                         }
+                        
+                        
+                        
+                        // MAP CODES
+                        let location = CLLocationCoordinate2D(latitude: self.selectedLatitudeDouble, longitude: self.selectedLongitudeDouble)
+                        let span = MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
+                        let region = MKCoordinateRegion(center: location, span: span)
+                        self.mapView.setRegion(region, animated: true)
+                        
                     }
                 }
             }
