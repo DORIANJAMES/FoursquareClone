@@ -11,7 +11,7 @@ import Parse
 
 class DetailsVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
     
-    
+    var selectedPlaceName = ""
     var selectedPlaceId = ""
     var selectedLatitudeDouble = Double()
     var selectedLongitudeDouble = Double()
@@ -71,6 +71,9 @@ class DetailsVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate 
                                 print("Longitude = \(self.selectedLongitudeDouble)")
                             }
                         }
+                        if let selectedName = chosenPlaceObject.object(forKey: "name") as? String {
+                            self.selectedPlaceName = selectedName
+                        }
                         
                         self.mapCodes()
                        
@@ -94,6 +97,44 @@ class DetailsVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate 
         annotation.title = self.placeNameLabel.text
         annotation.subtitle = self.placeTypeLabel.text
         self.mapView.addAnnotation(annotation)
+    }
+    
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        if annotation is MKUserLocation{
+            return nil
+        }
+        let reuseId = "pin"
+        var pinView = mapView.dequeueReusableAnnotationView(withIdentifier: reuseId)
+        if pinView == nil {
+            pinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
+            pinView?.canShowCallout = true
+            let button = UIButton(type: UIButton.ButtonType.detailDisclosure)
+            pinView?.rightCalloutAccessoryView = button
+        } else {
+            pinView?.annotation = annotation
+        }
+        return pinView
+    }
+    
+    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
+        if selectedLatitudeDouble != nil && selectedLongitudeDouble != nil {
+            let requestLocation = CLLocation(latitude: selectedLatitudeDouble, longitude: selectedLongitudeDouble)
+            CLGeocoder().reverseGeocodeLocation(requestLocation) { placemarks, error in
+                if error != nil {
+                    
+                } else {
+                    if let placemark = placemarks {
+                        if placemark.count > 0 {
+                            let newPlacemark = MKPlacemark(placemark: placemark[0])
+                            let item = MKMapItem(placemark: newPlacemark)
+                            item.name = self.selectedPlaceName
+                            let launchOptions = [MKLaunchOptionsDirectionsModeKey:MKLaunchOptionsDirectionsModeDriving]
+                            item.openInMaps(launchOptions: launchOptions)
+                        }
+                    }
+                }
+            }
+        }
     }
    
     
