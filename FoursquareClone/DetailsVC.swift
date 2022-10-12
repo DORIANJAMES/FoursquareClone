@@ -88,11 +88,14 @@ class DetailsVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate 
         self.mapView.setRegion(region, animated: true)
         print("\(selectedLatitudeDouble)")
         print("\(selectedLongitudeDouble)")
-    }
-    
-    func annotationCodes() {
         
+        let annotation = MKPointAnnotation()
+        annotation.coordinate = location
+        annotation.title = self.placeNameLabel.text
+        annotation.subtitle = self.placeTypeLabel.text
+        self.mapView.addAnnotation(annotation)
     }
+   
     
     func makeAlert(alertTitle:String, alertMessage:String,alertStyle:UIAlertController.Style, buttonTitle:String, buttonStyle:UIAlertAction.Style, handler:String) {
         let alert = UIAlertController(title: alertTitle, message: alertMessage, preferredStyle: alertStyle)
