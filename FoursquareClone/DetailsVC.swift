@@ -59,7 +59,7 @@ class DetailsVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate 
                                 }
                             }
                         }
-                        if let latitude = chosenPlaceObject.object(forKey: "latitude") as? String {
+                        if let latitude = chosenPlaceObject.object(forKey: "latidude") as? String {
                             if let doubleLatitude = Double(latitude) {
                                 self.selectedLatitudeDouble = doubleLatitude
                                 
@@ -72,21 +72,27 @@ class DetailsVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate 
                             }
                         }
                         
-                        
-                        
-                        // MAP CODES
-                        let location = CLLocationCoordinate2D(latitude: self.selectedLatitudeDouble, longitude: self.selectedLongitudeDouble)
-                        let span = MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
-                        let region = MKCoordinateRegion(center: location, span: span)
-                        self.mapView.setRegion(region, animated: true)
-                        
+                        self.mapCodes()
+                       
                     }
                 }
             }
         }
     }
     
+    func mapCodes () {
+        // MAP CODES
+        let location = CLLocationCoordinate2D(latitude: selectedLatitudeDouble, longitude: selectedLongitudeDouble)
+        let span = MKCoordinateSpan(latitudeDelta: 0.035, longitudeDelta: 0.035)
+        let region = MKCoordinateRegion(center: location, span: span)
+        self.mapView.setRegion(region, animated: true)
+        print("\(selectedLatitudeDouble)")
+        print("\(selectedLongitudeDouble)")
+    }
     
+    func annotationCodes() {
+        
+    }
     
     func makeAlert(alertTitle:String, alertMessage:String,alertStyle:UIAlertController.Style, buttonTitle:String, buttonStyle:UIAlertAction.Style, handler:String) {
         let alert = UIAlertController(title: alertTitle, message: alertMessage, preferredStyle: alertStyle)
