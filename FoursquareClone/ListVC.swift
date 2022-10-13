@@ -7,6 +7,7 @@
 
 import UIKit
 import Parse
+import ParseSwift
 
 class ListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
@@ -57,6 +58,22 @@ class ListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         }
     }
     
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete{
+            chosenPlaceId = placeObjectId[indexPath.row]
+            let query = PFQuery(className: "Places")
+            query.whereKey("objectId", equalTo: chosenPlaceId)
+            query.findObjectsInBackground { pfObjects, error in
+                pfObjects![0].deleteEventually()
+                self.tableView.reloadData()
+                // Burada da çalıştırdım ancak yine olmadı
+            }
+            
+        }
+        
+    }
+    
+   
     
     
     func getDataFromParse() {

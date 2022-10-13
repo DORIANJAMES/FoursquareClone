@@ -86,7 +86,7 @@ class DetailsVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate 
     func mapCodes () {
         // MAP CODES
         let location = CLLocationCoordinate2D(latitude: selectedLatitudeDouble, longitude: selectedLongitudeDouble)
-        let span = MKCoordinateSpan(latitudeDelta: 0.035, longitudeDelta: 0.035)
+        let span = MKCoordinateSpan(latitudeDelta: 0.015, longitudeDelta: 0.015)
         let region = MKCoordinateRegion(center: location, span: span)
         self.mapView.setRegion(region, animated: true)
         print("\(selectedLatitudeDouble)")
@@ -106,7 +106,8 @@ class DetailsVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate 
         let reuseId = "pin"
         var pinView = mapView.dequeueReusableAnnotationView(withIdentifier: reuseId)
         if pinView == nil {
-            pinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
+            // MKPinAnnotationView IOS16 ve sonrası için depreciated edildiği için onun yerine MKMarkerAnnotationView fonksiyonunu kullanıyoruz.
+            pinView = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
             pinView?.canShowCallout = true
             let button = UIButton(type: UIButton.ButtonType.detailDisclosure)
             pinView?.rightCalloutAccessoryView = button
@@ -116,11 +117,15 @@ class DetailsVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate 
         return pinView
     }
     
+    
+    
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
-        if selectedLatitudeDouble != nil && selectedLongitudeDouble != nil {
+        if selectedLatitudeDouble != 0.0 && selectedLongitudeDouble != 0.0 {
             let requestLocation = CLLocation(latitude: selectedLatitudeDouble, longitude: selectedLongitudeDouble)
+            // reverseGocodeLocation bizim bulunduğumuz yerden annotasyondaki yer'e geri rota çizer. Bunu mecburen yapmamız lazım.
             CLGeocoder().reverseGeocodeLocation(requestLocation) { placemarks, error in
                 if error != nil {
+                    self.makeAlert(alertTitle: "Location Couldn't Find", alertMessage: "Sorry, we couldn't find your current location for drawing a route to target location", alertStyle: UIAlertController.Style.alert, buttonTitle: "OK", buttonStyle: UIAlertAction.Style.default, handler: "")
                     
                 } else {
                     if let placemark = placemarks {
